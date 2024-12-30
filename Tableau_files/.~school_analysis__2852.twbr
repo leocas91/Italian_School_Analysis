@@ -13,7 +13,7 @@
     <_.fcp.VConnDownstreamExtractsWithWarnings.true...VConnDownstreamExtractsWithWarnings />
     <WindowsPersistSimpleIdentifiers />
   </document-format-change-manifest>
-  <repository-location id='school_analysis' path='/workbooks' revision='1.0' />
+  <repository-location id='school_analysis' path='/workbooks' revision='1.1' />
   <preferences>
     <preference name='ui.encoding.shelf.height' value='24' />
     <preference name='ui.shelf.height' value='26' />
@@ -278,13 +278,10 @@
           <strip size='2147483647'>
             <card type='rows' />
           </strip>
-          <strip size='31'>
-            <card type='title' />
-          </strip>
         </edge>
         <edge name='right'>
           <strip size='170'>
-            <card pane-specification-id='0' param='[federated.1xra1140y7cspv1gjyd3k1cee8cw].[:Measure Names]' type='color' />
+            <card pane-specification-id='0' param='[federated.1xra1140y7cspv1gjyd3k1cee8cw].[:Measure Names]' show-title='false' type='color' />
           </strip>
         </edge>
       </cards>
