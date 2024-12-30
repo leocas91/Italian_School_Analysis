@@ -20,9 +20,9 @@ I will not go in the details, even because I am not expert and this is not the s
 I created the database with PostgreSQl and I imported the csv files generated with Pandas in each table of the database. You can check the SQL files in the github folder.
 
 # 1 - Fixed Term vs Permanent Contract Teachers
-The picture below shows how the fixed term teachers have increased year by year (last year available is 202223)compared to the permanent teachers.
+The picture below shows how the fixed term teachers have increased year by year (last year available is 202223) compared to the permanent teachers.
 
-![teachers](https://public.tableau.com/views/school_analysis/1__fixed_Term?:language=it-IT&publish=yes&:sid=&:redirect=auth&:display_count=n&:origin=viz_share_link)
+![Testo alternativo](/Users/leocas91/Documents/SQL/Italian_School_Analysis/Tableau_files/charts/1_%_fixed_Term.png)
 
 You can also see the same in terms of percentage.
 
