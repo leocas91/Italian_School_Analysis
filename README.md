@@ -22,7 +22,7 @@ I created the database with PostgreSQl and I imported the csv files generated wi
 # 1 - Fixed Term vs Permanent Contract Teachers
 The picture below shows how the fixed term teachers have increased year by year (last year available is 202223) compared to the permanent teachers.
 
-![Testo alternativo](/Users/leocas91/Documents/SQL/Italian_School_Analysis/Tableau_files/charts/1_%_fixed_Term.png)
+![teachers](assets/1_%_fixed_Term.png)
 
 You can also see the same in terms of percentage.
 
