@@ -144,6 +144,7 @@ CREATE TABLE public.num_docenti_suppl
     DOCENTISUPPLENTIMASCHI INT,
     DOCENTISUPPLENTIFEMMINE INT,
     FOREIGN KEY (ANNOSCOLASTICO) REFERENCES public.anno_scolastico (ANNOSCOLASTICO)
+    FOREIGN KEY (PROVINCIA) REFERENCES public.location (PROVINCIA)
 );
 
 
@@ -180,7 +181,6 @@ INSERT INTO anno_scolastico (annoscolastico)
 VALUES (202425);
 
 --String manipulations
-SELECT DISTINCT regione FROM anagrafe;
 UPDATE anagrafe
 SET regione = 'FRIULI-VENEZIA GIULIA' 
 WHERE regione = 'FRIULI-VENEZIA G.';
@@ -192,6 +192,14 @@ WHERE regione = 'FRIULI-VENEZIA G.';
 UPDATE bilancio_consuntivo
 SET regione = 'FRIULI-VENEZIA GIULIA' 
 WHERE regione = 'FRIULI-VENEZIA G.';
+
+UPDATE public.tipoistituto
+SET tipo_scuola = 'IST PROFESSIONALE'
+WHERE tipo_scuola = 'IST PROFESSIONAL';
+
+UPDATE public.tipoistituto
+SET tipo_scuola = 'SCUOLA SEC SECONDO GRADO NON STATALE'
+WHERE tipo_scuola = 'SCUOLA SEC SECONDO GRADO';
 
 --Let's create some useful columns
 ALTER TABLE public.codice_livello 
