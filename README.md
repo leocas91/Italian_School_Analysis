@@ -1,32 +1,35 @@
 # Introduction
-The goal of this project is to analyze the Italian education system, focusing on regional disparities across administrative areas and identifying the key factors contributing the improvement or the decline of educational standards.
+This project aims to analyze the Italian education system, focusing on regional disparities across administrative areas and identifying key factors contributing to the improvement or decline of educational standards.
 
 # Data and Tools
-The data used for the analysis come from the [ministry of education website](https://dati.istruzione.it/opendata/opendata/catalogo/), in the open data section. Among the different topics present in portal, we focues mainly on the folowing themes:
-- School (SCUOLE): anagraphic information.
-- Students (STUDENTI): age, genre, nationality.
-- School employees (PERSONALE SCUOLA): fixed term and permanent.
-- School Budget (BILANCIO INTEGRATO DELLE SCUOLE): balance sheet.
+The data used for the analysis come from the [Ministry of Education website](https://dati.istruzione.it/opendata/opendata/catalogo/), specifically from the Open Data section. Among the various topics available on the portal, the focus is primarily on the following themes:
+- ***School (SCUOLE)***: Anagraphic information.
+- ***Students (STUDENTI)***: Age, gender, nationality.
+- ***School employees (PERSONALE SCUOLA)***: Fixed-term and permanent staff.
+- ***School Budget (BILANCIO INTEGRATO DELLE SCUOLE)***: Balance sheet data.
 
-The portal covers a lot of topics, so I don't exclude that I may cover further topics in the future for the analysis.
+The portal covers many topics, and I may explore additional themes in future analyses.
 
-The tools used for my data analysis are:
-- Python: since the portal contains one dataset for each school year, I used Pandas to append all the dataset with the same format and made some data cleaning.
-- PostgreSQL: I created the database, loaded the csv modified by Pandas and made different queries to investigate the data.
-- Tableau Public: I loaded the results from the SQL queries and created some visualizations in order to show the insights.
+***Tools Used:***
+- ***Python***: Given the portal’s structure (one dataset per school year), I used Pandas to append datasets with the same format and perform data cleaning.
+- ***PostgreSQL***: I created a database, loaded the cleaned CSV files, and executed queries to explore the data.
+- ***Tableau Public***: SQL query results were visualized using Tableau to present insights effectively.
 
-# Few words about the database
-I will not go in the details, even because I am not expert and this is not the scope of the discussion.
-I created the database with PostgreSQl and I imported the csv files generated with Pandas in each table of the database. You can check the SQL files in the github folder.
+# Database Overview
+This section provides a brief overview of the database used in the project.
+
+I created the database using PostgreSQL and imported the CSV files processed with Pandas into separate tables. Detailed SQL scripts are available in the GitHub repository under the relevant folder.
 
 # 1 - Fixed Term vs Permanent Contract Teachers
-The picture below shows how the fixed term teachers have increased year by year (last year available is 202223) compared to the permanent teachers.
+The chart below illustrates the year-over-year increase in fixed-term teachers (latest data: 2022/2023) compared to permanent teachers.
 
 ![teachers](assets/1_fixed_vs_permanent.png)
 
-Below you can see the same in terms of percentage.
+The percentage breakdown is shown in the chart below:
 
 ![teachers](assets/1_perc_fixed.png)
+
+These charts highlight a concerning trend: in just seven years, the percentage of fixed-term employees has doubled.
 
 # 2 - WIP
 # 3 - WIP
