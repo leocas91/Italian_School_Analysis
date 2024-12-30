@@ -2,7 +2,7 @@
 The goal of this project is to analyze the Italian education system, focusing on regional disparities across administrative areas and identifying the key factors contributing the improvement or the decline of educational standards.
 
 # Data and Tools
-The data used for the analysis come from the [ministry of educucation website](https://dati.istruzione.it/opendata/opendata/catalogo/), in the open data section. Among the different topics present in portal, we focues mainly on the folowing themes:
+The data used for the analysis come from the [ministry of education website](https://dati.istruzione.it/opendata/opendata/catalogo/), in the open data section. Among the different topics present in portal, we focues mainly on the folowing themes:
 - School (SCUOLE): anagraphic information.
 - Students (STUDENTI): age, genre, nationality.
 - School employees (PERSONALE SCUOLA): fixed term and permanent.
@@ -22,7 +22,7 @@ I created the database with PostgreSQl and I imported the csv files generated wi
 # 1 - Fixed Term vs Permanent Contract Teachers
 The picture below shows how the fixed term teachers have increased year by year (last year available is 202223) compared to the permanent teachers.
 
-![teachers](assets/1_%_fixed_Term.png)
+![teachers](assets/1_perc_fixed_Term.png)
 
 You can also see the same in terms of percentage.
 
