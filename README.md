@@ -296,17 +296,79 @@ CREATE INDEX idx_bilancio_consuntivo_clkey ON public.bilancio_consuntivo(codicel
 ```
 
 # 1 - Fixed Term vs Permanent Contract Teachers
-The chart below illustrates the year-over-year increase in fixed-term teachers (latest data: 2022/2023) compared to permanent teachers.
+The initial analysis aims to illustrate the trend in fixed-term and permanent teaching contracts over time. The data is represented by the SQL query below:
+
+```sql
+WITH titolari AS (
+SELECT 
+    a.annoscolastico anno_scolastico,
+    sum(i.docenti) docenti_titolari
+FROM
+    anno_scolastico a
+INNER JOIN num_docenti_indet i ON a.annoscolastico = i.annoscolastico
+GROUP BY a.annoscolastico
+)
+SELECT 
+    s.annoscolastico anno,
+    sum(s.docenti) supplenti,
+    titolari.docenti_titolari titolari,
+    ROUND(sum(s.docenti)::NUMERIC / (sum(s.docenti) + titolari.docenti_titolari)*100, 2) perc_supplenti
+    FROM num_docenti_suppl s
+INNER JOIN titolari ON s.annoscolastico = titolari.anno_scolastico
+GROUP BY s.annoscolastico,titolari.docenti_titolari;
+```
+
+### Key Findings
+
+The results of the query are visualized in the following charts:
+
+***1.	Trend of Fixed-Term vs. Permanent Teachers***
+
+This chart illustrates the year-over-year growth in fixed-term teachers relative to permanent teachers.
 
 ![teachers](assets/1_fixed_vs_permanent.png)
 
-The percentage breakdown is shown in the chart below:
+***2.	Percentage of Fixed-Term Teachers***
+
+This chart shows the percentage breakdown of fixed-term teachers over time.
 
 ![teachers](assets/1_perc_fixed.png)
 
-These charts highlight a concerning trend: in just seven years, the percentage of fixed-term employees has doubled.
+### Observations
 
-# 2 - WIP
+These visualizations reveal a concerning trend: over the past seven years, the percentage of fixed-term teaching staff has doubled.
+
+A high proportion of fixed-term contracts often results in increased staff turnover, disrupting the continuity of teaching and potentially compromising the quality of education. To address these issues, it is crucial to implement measures aimed at increasing the number of permanent teaching positions, thereby ensuring stability and maintaining high standards in education delivery.
+
+# 2 - Choice of the secondary school
+This analysis explores the relationship between school type selection and students’ nationalities, focusing on secondary schools.
+
+For the year 2022-2023 the query below calculates, for each type of secondary school:
+- The number of Italian students
+- The number of non-Italian students
+- The percentage of non-Italian students
+
+```sql
+SELECT 
+    t.tipo_scuola tipo,
+    sum(d.alunnicittadinanzanonitalianapaesinonue) stranieri,
+    sum(d.alunnicittadinanzaitaliana) italiani,
+    ROUND(sum(d.alunnicittadinanzanonitalianapaesinonue)::NUMERIC / (sum(d.alunnicittadinanzanonitalianapaesinonue) + sum(d.alunnicittadinanzaitaliana))*100, 2) perc_stranieri
+FROM distrib_cittadinanza d
+INNER JOIN anagrafe a ON d.codicescuola = a.codicescuola
+INNER JOIN tipoistituto t ON a.descrizionetipologiagradoistruzionescuola = t.descrizionetipologiagradoistruzionescuola
+WHERE annoscolastico = 202223 AND
+    ordinescuola = 'SCUOLA SECONDARIA II GRADO' AND
+    t.tipo_scuola <> 'SCUOLA SEC SECONDO GRADO NON STATALE'
+GROUP BY t.tipo_scuola
+ORDER BY perc_stranieri DESC;
+```
+
+The table below shows the results of the query:
+![school_choice](assets/2_school_choice.png)
+
+The data indicates that technical institutes are the most preferred school type among non-Italian students, having the highest percentage of non-Italian enrollment compared to other secondary school types.
+
 # 3 - WIP
 
 # 4 - School Budget - WIP
