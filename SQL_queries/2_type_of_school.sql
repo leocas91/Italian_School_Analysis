@@ -29,14 +29,15 @@ WHERE annoscolastico = 202223 AND
     t.tipo_scuola <> 'SCUOLA SEC SECONDO GRADO NON STATALE'
 GROUP BY l.areageografica, t.tipo_scuola;
 
---Trend of students depending on type of school (secondary) in the territory
+--Trend of on type of school (secondary) chosen
 SELECT
     d.annoscolastico anno,
     a.areageografica area,
-    CONCAT(d.tipopercorso, ' ', d.percorso) percorso,
-    sum(alunni) alunni
+    t.tipo_scuola tipo,
+    sum(d.alunni) alunni
 FROM distrib_ind_secondaria d
 INNER JOIN anagrafe a ON a.codicescuola = d.codicescuola
-GROUP BY d.annoscolastico, a.areageografica, CONCAT(d.tipopercorso, ' ', d.percorso)
+INNER JOIN tipoistituto t ON a.descrizionetipologiagradoistruzionescuola = t.descrizionetipologiagradoistruzionescuola
+GROUP BY d.annoscolastico, a.areageografica, t.tipo_scuola
 ORDER BY 1,2;
 

@@ -8,6 +8,8 @@ The data used for the analysis come from the [Ministry of Education website](htt
 - ***School employees (PERSONALE SCUOLA)***: Fixed-term and permanent staff.
 - ***School Budget (BILANCIO INTEGRATO DELLE SCUOLE)***: Balance sheet data.
 
+The information are available up to the 2022-2023 academic year.
+
 The portal covers many topics, and I may explore additional themes in future analyses.
 
 ***Tools Used:***
@@ -341,9 +343,10 @@ These visualizations reveal a concerning trend: over the past seven years, the p
 A high proportion of fixed-term contracts often results in increased staff turnover, disrupting the continuity of teaching and potentially compromising the quality of education. To address these issues, it is crucial to implement measures aimed at increasing the number of permanent teaching positions, thereby ensuring stability and maintaining high standards in education delivery.
 
 # 2 - Choice of the secondary school
-This analysis explores the relationship between school type selection and students’ nationalities, focusing on secondary schools.
+This section analyzes the relationship between school type selection, students’ nationalities and country area, with a focus on secondary schools.
 
-For the year 2022-2023 the query below calculates, for each type of secondary school:
+## Analysis 1: Nationality and School Type
+For the 2022-2023 academic year, the SQL query below calculates the following metrics for each type of secondary school:
 - The number of Italian students
 - The number of non-Italian students
 - The percentage of non-Italian students
@@ -364,10 +367,61 @@ GROUP BY t.tipo_scuola
 ORDER BY perc_stranieri DESC;
 ```
 
-The table below shows the results of the query:
+The table below summarizes the query results:
 ![school_choice](assets/2_school_choice.png)
 
-The data indicates that technical institutes are the most preferred school type among non-Italian students, having the highest percentage of non-Italian enrollment compared to other secondary school types.
+### Observations
+
+The data indicates that professional institutes are the most preferred school type among non-Italian students, having the highest percentage of non-Italian enrollment compared to other secondary school types.
+
+## Analysis 2: Regional Trends in School Selection
+This analysis examines the trends in school selection across five geographical areas of Italy (North-West, North-East, Center, South, and Islands). The SQL query below retrieves the total number of students by school type for each area and academic year.
+
+```sql
+SELECT
+    d.annoscolastico anno,
+    a.areageografica area,
+    t.tipo_scuola tipo,
+    sum(d.alunni) alunni
+FROM distrib_ind_secondaria d
+INNER JOIN anagrafe a ON a.codicescuola = d.codicescuola
+INNER JOIN tipoistituto t ON a.descrizionetipologiagradoistruzionescuola = t.descrizionetipologiagradoistruzionescuola
+GROUP BY d.annoscolastico, a.areageografica, t.tipo_scuola
+ORDER BY 1,2;
+```
+
+I visualized the query results using Excel charts instead of Tableau because the trend line chart requires a date format, while the school year data is stored as text in this case.
+
+![trend_choice](assets/2_trend_choice_north_west.png)
+*School choice trend in north-west area.*
+
+![trend_choice](assets/2_trend_choice_north_east.png)
+*School choice trend in north-east area.*
+
+![trend_choice](assets/2_trend_choice_center.png)
+*School choice trend in the center area.*
+
+![trend_choice](assets/2_trend_choice_south.png)
+*School choice trend in south area.*
+
+![trend_choice](assets/2_trend_choice_islands.png)
+*School choice trend in the main islands.*
+
+### Key Findings
+1.	School Popularity (Descending Order):
+	1.	Technical Institutes
+	2.	Scientific High Schools
+	3.	Professional Institutes
+	4.	Classical High Schools
+	5.	Teacher Training Institutes
+
+2.	Trends by School Type:
+	- Scientific High Schools show a consistent increase across all regions.
+	- Professional Institutes exhibit a decreasing trend nationwide.
+	- Technical Institutes display mixed results:
+	- Slight decreases in the Center, Islands, and South.
+	- Stability or slight increases in the North-West and North-East.
+	- Classical High Schools remain stable across all areas.
 
 # 3 - WIP
 
