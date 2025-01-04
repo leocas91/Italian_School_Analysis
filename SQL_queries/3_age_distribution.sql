@@ -1,19 +1,8 @@
 --Age distribution over the years
-
 SELECT 
     annoscolastico, 
     fasciaeta,
     sum(alunni) alunni 
-FROM distrib_eta
-GROUP BY annoscolastico, fasciaeta
-ORDER BY fasciaeta, annoscolastico;
-
-
---Age distribution in the territory
-SELECT 
-    d.annoscolastico, 
-    d.fasciaeta,
-    sum(d.alunni) alunni 
 FROM distrib_eta
 GROUP BY annoscolastico, fasciaeta
 ORDER BY fasciaeta, annoscolastico;
@@ -47,4 +36,3 @@ SELECT
 FROM num_bambini
 GROUP BY annoscolastico
 ORDER BY annoscolastico;
-

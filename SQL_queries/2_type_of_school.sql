@@ -15,7 +15,7 @@ GROUP BY t.tipo_scuola
 ORDER BY perc_stranieri DESC;
 
 
---Analyze the distribution in the territory (to be done)
+--Analyze the distribution in the territory
 SELECT 
     l.areageografica,
     t.tipo_scuola tipo,

@@ -423,7 +423,30 @@ I visualized the query results using Excel charts instead of Tableau because the
 	- Stability or slight increases in the North-West and North-East.
 	- Classical High Schools remain stable across all areas.
 
-# 3 - WIP
+# 3 - Age distribution
+This analysis examines the distribution of students’ ages and highlights trends that may inform projections for the future.
+
+## Analysis 1: Trend in Student Numbers by School Grade
+This analysis explores the trend in student numbers across different school grades. The SQL query used is as follows:
+
+```sql
+SELECT 
+    annoscolastico,
+    ordinescuola,
+    sum(alunni) alunni 
+FROM distrib_eta
+GROUP BY annoscolastico, ordinescuola
+ORDER BY ordinescuola, annoscolastico;
+```
+
+The results are visualized in the Excel chart below:
+![trend_school_grade](assets/3_trend_students_school_grade.png)
+
+### Observations
+
+- The number of students in primary schools is declining. A likely contributing factor is the significant decrease in birth rates over the past decade, leading to fewer young children.
+- Conversely, the number of students in high schools is increasing.
+- Despite this, the overall number of students continues to decline year after year, reflecting broader demographic shifts.
 
 # 4 - School Budget - WIP
 
