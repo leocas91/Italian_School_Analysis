@@ -26,7 +26,7 @@ The resulting ER diagram is shown below. ***Note:*** I am fully aware that the d
 
 ![ER-diagram](assets/scuola_ER_diagram.png)
 
-Here below I report the SQL code used but you can also check it the "SQL Load" folder. You can skip this part and go to the next paragraph if you are not interested.
+Here below I report the SQL code used but you can also check it the "SQL Load" folder. You can skip this part and go to the [analysis](#1---fixed-term-vs-permanent-contract-teachers) if you are not interested.
 
 Creation of the postgreSQL database after connecting VS Code with Postgres:
 ```sql
