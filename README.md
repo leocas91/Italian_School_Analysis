@@ -448,6 +448,49 @@ The results are visualized in the Excel chart below:
 - Conversely, the number of students in high schools is increasing.
 - Despite this, the overall number of students continues to decline year after year, reflecting broader demographic shifts.
 
+## Analysis 2: Number of Children in Primary School
+This analysis builds on the observations from the first analysis, focusing specifically on the number of children enrolled in nursery schools. The SQL query used is as follows:
+
+```sql
+SELECT
+     annoscolastico school_year,
+     sum(bambinimaschi + bambinifemmine) children,
+     ROUND(
+        (SUM(bambinimaschi + bambinifemmine) - LAG(SUM(bambinimaschi + bambinifemmine)) OVER (ORDER BY annoscolastico)) 
+        * 100.0 
+        / NULLIF(LAG(SUM(bambinimaschi + bambinifemmine)) OVER (ORDER BY annoscolastico), 0),
+        2
+    ) AS perc_YOY_variation ,
+    ROUND(
+        (SUM(bambinimaschi + bambinifemmine) - FIRST_VALUE(SUM(bambinimaschi + bambinifemmine)) OVER (ORDER BY annoscolastico))
+        * 100.0
+        / NULLIF(FIRST_VALUE(SUM(bambinimaschi + bambinifemmine)) OVER (ORDER BY annoscolastico), 0),
+        2
+    ) AS perc_YTD_variation
+FROM num_bambini
+GROUP BY annoscolastico
+ORDER BY annoscolastico;
+```
+
+The table below summarizes the query results:
+
+| year           | children | %_YOY_variation  | %_YTD_variation |
+|----------------|----------|------------------|-----------------|
+| 201718         | 1420396  | NULL             | 0.00            |
+| 201819         | 1367752  | -3.71            | -3.71           |
+| 201920         | 1323274  | -3.25            | -6.84           |
+| 202021         | 1258651  | -4.88            | -11.39          |
+| 202122         | 1274410  | 1.25             | -10.28          |
+| 202223         | 1252632  | -1.71            | -11.81          |
+
+
+### Observations
+
+The data clearly illustrates that the decline in birth rates is having a substantial impact on the number of children enrolled in nursery schools.
+- From the 2017-18 to 2022-23 academic years, the total number of children in nursery schools decreased by 11.81%.
+- The year-over-year (YoY) variation shows consistent decreases, with a brief positive spike in 2021-22 (+1.25%), likely reflecting temporary factors.
+- This downward trend underscores broader demographic challenges, such as declining birth rates and their impact on early education systems.
+
 # 4 - School Budget - WIP
 
 
