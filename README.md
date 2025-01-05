@@ -491,7 +491,32 @@ The data clearly illustrates that the decline in birth rates is having a substan
 - The year-over-year (YoY) variation shows consistent decreases, with a brief positive spike in 2021-22 (+1.25%), likely reflecting temporary factors.
 - This downward trend underscores broader demographic challenges, such as declining birth rates and their impact on early education systems.
 
-# 4 - School Budget - WIP
+# 4 - School Budget
+We have reached the most critical part of the analysis: the school budget. By examining the various types of income and expenses, the goal is to uncover insights and identify potential challenges in financial management.
+
+Unfortunately, due to the unavailability of data from the Ministry of Education, the regions of Valle D’Aosta, Trento, and Bolzano are excluded from this analysis.
+
+You can explore the dashboard I created for the budget analysis at the following [link](https://public.tableau.com/app/profile/leonardo.castiglione1355/viz/4_budget/4_Budget?publish=yes). The dashboard allows you to select specific regions or provinces and view detailed information on the right side for each selected area.
+
+### Observations
+One of the first observations is that a significant portion of income (above 38% at the national level for all analyzed academic years) comes from the presumed administrative surplus, most of which is restricted.
+
+When the presumed administrative surplus (both restricted and unrestricted) constitutes a significant portion of a school’s revenues, it reveals both operational dependencies and financial vulnerabilities.
+
+### Implications of a High Presumed Administrative Surplus in School Budgets
+
+In the context of Italian school budgets, the presumed administrative surplus is the leftover amount from the previous year’s budget, calculated as:
+
+***Cash balance + Active residuals - Passive residuals***
+
+While this surplus can serve as a temporary financial buffer, its large proportion within total revenues indicates potential challenges:
+1.	***Dependency on Past Resources***: A substantial reliance on the administrative surplus suggests that current operations depend heavily on leftover funds, rather than fresh revenues. This can hinder long-term planning and financial sustainability.
+2.	***Indication of Delayed Funding***: A high surplus often reflects delays in the transfer of funds, especially from government entities. Schools may accumulate active residuals (uncollected promised revenues), leading to operational uncertainties.
+3.	***Restricted Funds Usage***: A portion of the surplus is typically restricted (vincolato), meaning it can only be used for specific purposes, such as designated projects or infrastructure. This limits the school’s flexibility in addressing unforeseen needs.
+4.	***Potential Underutilization of Resources***: If a surplus grows consistently, it could indicate inefficiencies in resource allocation or difficulties in executing planned projects, often due to a lack of timely funding or administrative constraints.
+5.	***Misleading Financial Health Indicators***: A large surplus may create the illusion of financial stability, but in reality, it often highlights structural issues like insufficient funding or reliance on residuals that are not guaranteed to materialize.
+
+
 
 
 
