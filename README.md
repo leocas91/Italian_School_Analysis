@@ -368,6 +368,7 @@ ORDER BY perc_stranieri DESC;
 ```
 
 The table below summarizes the query results:
+
 ![school_choice](assets/2_school_choice.png)
 
 ### Observations
@@ -440,6 +441,7 @@ ORDER BY ordinescuola, annoscolastico;
 ```
 
 The results are visualized in the Excel chart below:
+
 ![trend_school_grade](assets/3_trend_students_school_grade.png)
 
 ### Observations
@@ -496,10 +498,31 @@ We have reached the most critical part of the analysis: the school budget. By ex
 
 Unfortunately, due to the unavailability of data from the Ministry of Education, the regions of Valle D’Aosta, Trento, and Bolzano are excluded from this analysis.
 
-You can explore the dashboard I created for the budget analysis at the following [link](https://public.tableau.com/app/profile/leonardo.castiglione1355/viz/4_budget/4_Budget?publish=yes). The dashboard allows you to select specific regions or provinces and view detailed information on the right side for each selected area.
+You can explore the dashboard I created for the budget analysis at the following [link](https://public.tableau.com/app/profile/leonardo.castiglione1355/viz/4_budget/4_Budget?publish=yes). The dashboard allows you to select specific regions or provinces and view detailed information on the right side for each selected area. 
 
-### Observations
+The data displayed in the dashboard is derived from the following SQL query:
+
+```sql
+SELECT 
+    b.annoscolastico,
+    a.regione regione,
+    a.provincia provincia,
+    c.descrizionelivello1 descrizione1,
+    c.descrizionelivello2 descrizione2,
+    c.tipologiavoce tipo,
+    sum(b.importo) importo  
+FROM bilancio_consuntivo b
+INNER JOIN codice_livello c ON c.codicelivellokey = b.codicelivellokey
+INNER JOIN anagrafe a ON a.codicescuola = b.codicescuola
+GROUP BY b.annoscolastico, a.regione, a.provincia, c.tipologiavoce, c.descrizionelivello1, c.descrizionelivello2
+ORDER BY importo DESC;
+```
+
+## Observation #1: Administrative Surplus
 One of the first observations is that a significant portion of income (above 38% at the national level for all analyzed academic years) comes from the presumed administrative surplus, most of which is restricted.
+
+![%_surplus](assets/4_perc_surplus.png)
+*Surplus vs incomes year by year.*
 
 When the presumed administrative surplus (both restricted and unrestricted) constitutes a significant portion of a school’s revenues, it reveals both operational dependencies and financial vulnerabilities.
 
@@ -515,6 +538,35 @@ While this surplus can serve as a temporary financial buffer, its large proporti
 3.	***Restricted Funds Usage***: A portion of the surplus is typically restricted (vincolato), meaning it can only be used for specific purposes, such as designated projects or infrastructure. This limits the school’s flexibility in addressing unforeseen needs.
 4.	***Potential Underutilization of Resources***: If a surplus grows consistently, it could indicate inefficiencies in resource allocation or difficulties in executing planned projects, often due to a lack of timely funding or administrative constraints.
 5.	***Misleading Financial Health Indicators***: A large surplus may create the illusion of financial stability, but in reality, it often highlights structural issues like insufficient funding or reliance on residuals that are not guaranteed to materialize.
+
+## Observation #2: EU Funds
+
+The second observation from the dashboard is that a significant portion of the income comes from EU funds. You can explore how these funds are distributed across regions at this [link](https://public.tableau.com/app/profile/leonardo.castiglione1355/viz/4_budget/4_Budget_EU_funds?publish=yes).
+
+![%_EU_funds](assets/4_perc_EU_funds.png)
+
+In recent years, European funds have become a growing and significant portion of school revenues, especially in regions with limited local or state funding. These funds are primarily allocated through programs like the European Structural Funds (ESF and ERDF) and specific initiatives such as PON (National Operational Programs), targeting areas with economic and social challenges.
+
+### Implications of Increasing European Funding
+***1.	Enhanced Financial Resources***: The growth of European funds provides schools with additional resources to support projects related to:
+	•	Digital transformation.
+	•	Teacher and student training programs.
+	•	Infrastructure improvements.
+	•	Reducing social and educational inequalities.
+
+***2.	Regional Balancing***: Regions in the South of Italy, such as Campania, Puglia, Calabria, and Sicily, benefit significantly from these funds, helping bridge the financial gap between them and wealthier regions in the North.
+
+***3.	Dependency on External Funding***: While European funds offer opportunities, they also create a dependency on external resources, which are often project-specific and not guaranteed for general operational needs. Schools may face difficulties in sustaining initiatives once the funding cycle ends.
+
+***4.	Administrative Complexity***: Accessing and managing European funds requires schools to navigate complex bureaucratic processes, including detailed project proposals, reporting, and compliance with EU regulations. This can strain administrative resources, especially in smaller schools.
+
+***5.	Focus on Targeted Projects***: European funds are typically tied to specific objectives, limiting their flexibility. Schools must align their activities with EU priorities, which may not always match their immediate or local needs.
+
+# Conclusions - WIP
+
+
+
+
 
 
 
