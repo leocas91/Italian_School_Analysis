@@ -562,7 +562,8 @@ In recent years, European funds have become a growing and significant portion of
 
 ***5.	Focus on Targeted Projects***: European funds are typically tied to specific objectives, limiting their flexibility. Schools must align their activities with EU priorities, which may not always match their immediate or local needs.
 
-# Conclusions - WIP
+# Conclusions
+The Italian school system demonstrates both strengths and areas needing improvement. The insights provided by this project underscore the need for targeted interventions to reduce regional disparities, enhance resource allocation, and support student success across the country.
 
 
 
